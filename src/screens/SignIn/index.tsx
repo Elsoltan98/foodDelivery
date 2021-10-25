@@ -1,6 +1,12 @@
 import React from 'react';
 import {useState} from 'react';
-import {View, Text, TextInput, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import {SocialIcon} from 'react-native-elements/dist/social/SocialIcon';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from '../../components/Header';
@@ -10,7 +16,7 @@ import styles from './styles';
 const SignIn = () => {
   const [show, setShow] = useState(false);
   return (
-    <View>
+    <ScrollView>
       <Header title="My Account" name="arrowleft" />
       <Text style={styles.mainText}>Sign in</Text>
       <View style={styles.textContainer}>
@@ -21,7 +27,7 @@ const SignIn = () => {
         <TextInput placeholder="Enter Email" />
       </View>
       <View style={styles.inputContainer}>
-        <View style={{flexDirection: 'row'}}>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Icon
             name="lock-closed"
             size={21}
@@ -70,7 +76,7 @@ const SignIn = () => {
       <TouchableOpacity style={styles.createBtn}>
         <Text style={styles.createText}>Create an account</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
 

@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {colors} from '../../global/styles';
 
 export default StyleSheet.create({
@@ -23,7 +23,8 @@ export default StyleSheet.create({
     borderColor: colors.grey4,
     borderWidth: 1,
     marginHorizontal: 20,
-    padding: 15,
+    paddingVertical: Platform.OS === 'android' ? 0 : 15,
+    paddingHorizontal: 15,
     borderRadius: 15,
     marginBottom: 20,
     flexDirection: 'row',
@@ -72,11 +73,12 @@ export default StyleSheet.create({
   createText: {
     borderColor: colors.buttons,
     borderWidth: 1,
-    paddingVertical: 15,
+    paddingVertical: 10,
     paddingHorizontal: 25,
     marginHorizontal: 20,
     borderRadius: 15,
     color: colors.buttons,
     fontSize: 17,
+    marginBottom: 40,
   },
 });
