@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaView, StatusBar, StyleSheet, View} from 'react-native';
-import Header from './src/components/Header';
 import {colors} from './src/global/styles';
+import SignIn from './src/screens/SignIn';
 
 const MyStatusBar = ({backgroundColor, ...props}: any) => (
   <View style={[styles.statusBar, {backgroundColor}]}>
@@ -14,8 +14,8 @@ const MyStatusBar = ({backgroundColor, ...props}: any) => (
 const App = () => {
   return (
     <View style={styles.container}>
-      <MyStatusBar backgroundColor={colors.buttons} barStyle="dark-content" />
-      <Header />
+      <MyStatusBar backgroundColor={colors.statusBar} barStyle="dark-content" />
+      <SignIn />
     </View>
   );
 };

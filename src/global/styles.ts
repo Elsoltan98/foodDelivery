@@ -7,6 +7,7 @@ export const colors = {
   grey5: '#e1e8ee',
   cardComment: '#86939e',
   cardBackground: '#ffffff',
+  statusBar: '#ff894d',
 };
 
 export const parameters = {
