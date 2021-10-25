@@ -12,4 +12,13 @@ export const colors = {
 
 export const parameters = {
   headerHeight: 50,
+  signBtn: {
+    height: 50,
+    backgroundColor: colors.buttons,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 20,
+    borderRadius: 15,
+    marginVertical: 20,
+  },
 };

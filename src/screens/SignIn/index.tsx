@@ -1,9 +1,10 @@
 import React from 'react';
 import {useState} from 'react';
-import {View, Text, TextInput} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity} from 'react-native';
+import {SocialIcon} from 'react-native-elements/dist/social/SocialIcon';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from '../../components/Header';
-import {colors} from '../../global/styles';
+import {colors, parameters} from '../../global/styles';
 import styles from './styles';
 
 const SignIn = () => {
@@ -36,6 +37,39 @@ const SignIn = () => {
           onPress={() => setShow(!show)}
         />
       </View>
+
+      <TouchableOpacity style={parameters.signBtn}>
+        <Text style={styles.signText}>Sign in</Text>
+      </TouchableOpacity>
+
+      <View style={styles.forgetContainer}>
+        <TouchableOpacity>
+          <Text style={styles.forgetText}>Forget password ?</Text>
+        </TouchableOpacity>
+        <Text style={styles.orText}>OR</Text>
+      </View>
+
+      <View>
+        <SocialIcon
+          button
+          type="facebook"
+          title="Sign in with facebook"
+          style={styles.socialBtn}
+        />
+        <SocialIcon
+          button
+          type="google"
+          title="Sign in with google"
+          style={styles.socialBtn}
+        />
+      </View>
+
+      <View>
+        <Text style={styles.new}>New in XpressFood ?</Text>
+      </View>
+      <TouchableOpacity style={styles.createBtn}>
+        <Text style={styles.createText}>Create an account</Text>
+      </TouchableOpacity>
     </View>
   );
 };
