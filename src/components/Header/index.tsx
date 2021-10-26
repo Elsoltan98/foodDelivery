@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {FC} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
@@ -7,12 +8,19 @@ import {colors, parameters} from '../../global/styles';
 interface Props {
   title: string;
   name: string;
+  type: string;
 }
 
-const Header: FC<Props> = ({title, name}) => {
+const Header: FC<Props> = ({title, name, type}) => {
+  const {navigate}: any = useNavigation();
   return (
     <View style={styles.header}>
-      <Icon name={name} size={25} onPress={() => {}} color="white" />
+      <Icon
+        name={name}
+        size={25}
+        onPress={() => navigate(type)}
+        color="white"
+      />
       <Text style={styles.title}>{title}</Text>
     </View>
   );

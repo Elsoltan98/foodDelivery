@@ -1,10 +1,11 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import Swiper from 'react-native-swiper';
-import {colors, parameters} from '../../global/styles';
+import {SIGNIN} from '../../global/RoutesName';
+import {parameters} from '../../global/styles';
 import styles from './styles';
 
-const Welcome = () => {
+const Welcome = ({navigation}: any) => {
   return (
     <View style={{flex: 1}}>
       <View style={styles.headerConatiner}>
@@ -40,7 +41,9 @@ const Welcome = () => {
         </Swiper>
       </View>
       <View style={{flex: 3, justifyContent: 'flex-end', marginVertical: 40}}>
-        <TouchableOpacity style={parameters.signBtn}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate(SIGNIN)}
+          style={parameters.signBtn}>
           <Text style={styles.signText}>Sign in</Text>
         </TouchableOpacity>
         <TouchableOpacity

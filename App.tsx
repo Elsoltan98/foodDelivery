@@ -1,8 +1,7 @@
 import React from 'react';
 import {SafeAreaView, StatusBar, StyleSheet, View} from 'react-native';
 import {colors} from './src/global/styles';
-// import SignIn from './src/screens/SignIn';
-import Welcome from './src/screens/Welcome';
+import RootNavigator from './src/navigations/RootNavigator';
 
 const MyStatusBar = ({backgroundColor, ...props}: any) => (
   <View style={[styles.statusBar, {backgroundColor}]}>
@@ -16,8 +15,7 @@ const App = () => {
   return (
     <View style={styles.container}>
       <MyStatusBar backgroundColor={colors.statusBar} barStyle="dark-content" />
-      <Welcome />
-      {/* <SignIn /> */}
+      <RootNavigator />
     </View>
   );
 };

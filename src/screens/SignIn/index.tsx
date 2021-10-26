@@ -10,6 +10,7 @@ import {
 import {SocialIcon} from 'react-native-elements/dist/social/SocialIcon';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from '../../components/Header';
+import {WELCOME} from '../../global/RoutesName';
 import {colors, parameters} from '../../global/styles';
 import styles from './styles';
 
@@ -17,7 +18,7 @@ const SignIn = () => {
   const [show, setShow] = useState(false);
   return (
     <ScrollView>
-      <Header title="My Account" name="arrowleft" />
+      <Header type={WELCOME} title="My Account" name="arrowleft" />
       <Text style={styles.mainText}>Sign in</Text>
       <View style={styles.textContainer}>
         <Text style={styles.text}>Please enter email and password</Text>
