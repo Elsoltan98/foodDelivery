@@ -10,11 +10,11 @@ import {
 import {SocialIcon} from 'react-native-elements/dist/social/SocialIcon';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from '../../components/Header';
-import {WELCOME} from '../../global/RoutesName';
+import {HOME, WELCOME} from '../../global/RoutesName';
 import {colors, parameters} from '../../global/styles';
 import styles from './styles';
 
-const SignIn = () => {
+const SignIn = ({navigation}: any) => {
   const [show, setShow] = useState(false);
   return (
     <ScrollView>
@@ -45,7 +45,9 @@ const SignIn = () => {
         />
       </View>
 
-      <TouchableOpacity style={parameters.signBtn}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate(HOME)}
+        style={parameters.signBtn}>
         <Text style={styles.signText}>Sign in</Text>
       </TouchableOpacity>
 
