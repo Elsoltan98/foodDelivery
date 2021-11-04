@@ -10,7 +10,7 @@ import {
 import {SocialIcon} from 'react-native-elements/dist/social/SocialIcon';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from '../../components/Header';
-import {HOME, WELCOME} from '../../global/RoutesName';
+import {CLIENTNAV, HOME, WELCOME} from '../../global/RoutesName';
 import {colors, parameters} from '../../global/styles';
 import styles from './styles';
 
@@ -46,7 +46,7 @@ const SignIn = ({navigation}: any) => {
       </View>
 
       <TouchableOpacity
-        onPress={() => navigation.navigate(HOME)}
+        onPress={() => navigation.navigate(CLIENTNAV)}
         style={parameters.signBtn}>
         <Text style={styles.signText}>Sign in</Text>
       </TouchableOpacity>
