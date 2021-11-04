@@ -14,7 +14,7 @@ interface Props {
 
 const HomeHeader: FC<Props> = ({title, name, type}) => {
   const {navigate}: any = useNavigation();
-  const BadgeIcon: any = withBadge(5)(Feather);
+  const BadgeIcon: any = withBadge(0)(Feather);
   return (
     <View style={styles.header}>
       <Icon

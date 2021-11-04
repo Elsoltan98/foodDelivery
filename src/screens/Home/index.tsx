@@ -16,12 +16,13 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {filterData, resturantsData} from '../../global/Data';
 import FoodCard from '../../components/FoodCard';
+import CountDown from 'react-native-countdown-component';
 
 const Home = () => {
   const [delivery, setDelivery] = useState(true);
   const [selected, setSelected] = useState(1);
   return (
-    <View>
+    <View style={styles.container}>
       <HomeHeader title="Xpress Food" name="arrowleft" type={SIGNIN} />
       <ScrollView>
         {/* Top Buttons */}
@@ -94,6 +95,7 @@ const Home = () => {
               Categories
             </Text>
           </View>
+
           <FlatList
             horizontal={true}
             showsHorizontalScrollIndicator={false}
@@ -129,20 +131,93 @@ const Home = () => {
             backgroundColor: colors.grey4,
             padding: 10,
             paddingHorizontal: 20,
+            marginBottom: 10,
           }}>
           <Text style={{color: colors.grey1, fontSize: 17, fontWeight: 'bold'}}>
             Free delivery now
           </Text>
         </View>
 
+        <View style={{flexDirection: 'row'}}>
+          <Text
+            style={{
+              marginHorizontal: 10,
+              marginTop: 15,
+              fontSize: 18,
+              color: colors.grey1,
+            }}>
+            Options changing in :
+          </Text>
+          <CountDown
+            until={3600}
+            size={17}
+            digitStyle={{backgroundColor: colors.lightGreen}}
+            digitTxtStyle={{color: colors.cardBackground}}
+            timeToShow={['M', 'S']}
+            timeLabels={{m: 'Min', s: 'Sec'}}
+          />
+        </View>
+
         <View>
           <FlatList
             horizontal={true}
+            showsHorizontalScrollIndicator={false}
             data={resturantsData}
             keyExtractor={(item): any => item.id}
-            renderItem={item => (
+            renderItem={({item}) => (
               <View>
                 <FoodCard item={item} />
+              </View>
+            )}
+          />
+        </View>
+
+        {/* Promotions available */}
+        <View
+          style={{
+            backgroundColor: colors.grey4,
+            padding: 10,
+            paddingHorizontal: 20,
+          }}>
+          <Text style={{color: colors.grey1, fontSize: 17, fontWeight: 'bold'}}>
+            Promotions available
+          </Text>
+        </View>
+
+        <View>
+          <FlatList
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            data={resturantsData}
+            keyExtractor={(item): any => item.id}
+            renderItem={({item}) => (
+              <View>
+                <FoodCard item={item} />
+              </View>
+            )}
+          />
+        </View>
+        {/* Resturants in your area */}
+        <View
+          style={{
+            backgroundColor: colors.grey4,
+            padding: 10,
+            paddingHorizontal: 20,
+          }}>
+          <Text style={{color: colors.grey1, fontSize: 17, fontWeight: 'bold'}}>
+            Resturants in your area
+          </Text>
+        </View>
+
+        <View>
+          <FlatList
+            horizontal={false}
+            showsHorizontalScrollIndicator={false}
+            data={resturantsData}
+            keyExtractor={(item): any => item.id}
+            renderItem={({item}) => (
+              <View>
+                <FoodCard fullWidth item={item} />
               </View>
             )}
           />
@@ -153,6 +228,9 @@ const Home = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    marginBottom: 100,
+  },
   topButtonsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
