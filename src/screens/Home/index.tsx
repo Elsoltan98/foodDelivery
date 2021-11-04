@@ -14,7 +14,8 @@ import {SIGNIN} from '../../global/RoutesName';
 import {colors} from '../../global/styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {filterData} from '../../global/Data';
+import {filterData, resturantsData} from '../../global/Data';
+import FoodCard from '../../components/FoodCard';
 
 const Home = () => {
   const [delivery, setDelivery] = useState(true);
@@ -97,7 +98,7 @@ const Home = () => {
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             data={filterData}
-            keyExtractor={item => item.id}
+            keyExtractor={(item): any => item.id}
             renderItem={({item}) => (
               <TouchableOpacity
                 onPress={() => setSelected(item.id)}
@@ -122,7 +123,7 @@ const Home = () => {
             )}
           />
         </View>
-
+        {/* Food delivery now */}
         <View
           style={{
             backgroundColor: colors.grey4,
@@ -132,6 +133,19 @@ const Home = () => {
           <Text style={{color: colors.grey1, fontSize: 17, fontWeight: 'bold'}}>
             Free delivery now
           </Text>
+        </View>
+
+        <View>
+          <FlatList
+            horizontal={true}
+            data={resturantsData}
+            keyExtractor={(item): any => item.id}
+            renderItem={item => (
+              <View>
+                <FoodCard item={item} />
+              </View>
+            )}
+          />
         </View>
       </ScrollView>
     </View>
