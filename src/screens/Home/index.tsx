@@ -16,6 +16,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {filterData, resturantsData} from '../../global/Data';
 import FoodCard from '../../components/FoodCard';
 import CountDown from 'react-native-countdown-component';
+import {Icon} from 'react-native-elements';
 
 const Home = () => {
   const [delivery, setDelivery] = useState(true);
@@ -222,6 +223,20 @@ const Home = () => {
           />
         </View>
       </ScrollView>
+
+      {/* Float button */}
+
+      <View style={styles.floatBtn}>
+        <TouchableOpacity>
+          <Icon
+            type="MaterialIcons"
+            name="location-pin"
+            size={21}
+            color={colors.buttons}
+          />
+          <Text>Map</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -281,6 +296,19 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 15,
     fontWeight: '600',
+  },
+  floatBtn: {
+    width: 70,
+    height: 70,
+    backgroundColor: colors.cardBackground,
+    position: 'absolute',
+    bottom: 80,
+    right: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 100,
+    borderColor: colors.grey5,
+    borderWidth: 1,
   },
 });
 
