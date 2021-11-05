@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {View} from 'react-native';
 import HomeHeader from '../../components/HomeHeader';
-import {SIGNIN} from '../../global/RoutesName';
+import {RESTURANTMAP, SIGNIN} from '../../global/RoutesName';
 import {colors} from '../../global/styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -18,7 +18,7 @@ import FoodCard from '../../components/FoodCard';
 import CountDown from 'react-native-countdown-component';
 import {Icon} from 'react-native-elements';
 
-const Home = () => {
+const Home = ({navigation}: any) => {
   const [delivery, setDelivery] = useState(true);
   const [selected, setSelected] = useState(1);
   return (
@@ -226,17 +226,19 @@ const Home = () => {
 
       {/* Float button */}
 
-      <View style={styles.floatBtn}>
-        <TouchableOpacity>
-          <Icon
-            type="MaterialIcons"
-            name="location-pin"
-            size={21}
-            color={colors.buttons}
-          />
-          <Text>Map</Text>
-        </TouchableOpacity>
-      </View>
+      {delivery && (
+        <View style={styles.floatBtn}>
+          <TouchableOpacity onPress={() => navigation.navigate(RESTURANTMAP)}>
+            <Icon
+              type="MaterialIcons"
+              name="location-pin"
+              size={21}
+              color={colors.buttons}
+            />
+            <Text>Map</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 };

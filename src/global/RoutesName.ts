@@ -5,3 +5,4 @@ export const CLIENTNAV = 'Client Nav';
 export const SEARCH = 'Search';
 export const ACCOUNT = 'Account';
 export const MYORDERS = 'My Orders';
+export const RESTURANTMAP = 'Resturant map';
