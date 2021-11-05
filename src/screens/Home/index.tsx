@@ -208,7 +208,7 @@ const Home = () => {
           </Text>
         </View>
 
-        <View>
+        <View style={{marginBottom: 50}}>
           <FlatList
             horizontal={false}
             showsHorizontalScrollIndicator={false}
@@ -228,7 +228,7 @@ const Home = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 100,
+    backgroundColor: colors.cardBackground,
   },
   topButtonsContainer: {
     flexDirection: 'row',
