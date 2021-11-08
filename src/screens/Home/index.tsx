@@ -23,7 +23,11 @@ const Home = ({navigation}: any) => {
   const [selected, setSelected] = useState(1);
   return (
     <View style={styles.container}>
-      <HomeHeader title="Xpress Food" name="arrowleft" type={SIGNIN} />
+      <HomeHeader
+        title="Xpress Food"
+        name="menu"
+        onPress={() => navigation.toggleDrawer()}
+      />
       <ScrollView>
         {/* Top Buttons */}
         <View style={styles.topButtonsContainer}>

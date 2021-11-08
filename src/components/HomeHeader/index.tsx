@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {colors, parameters} from '../../global/styles';
-import Icon from 'react-native-vector-icons/AntDesign';
+import {Icon} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/core';
 import {withBadge} from 'react-native-elements';
 import Feather from 'react-native-vector-icons/Feather';
@@ -10,19 +10,14 @@ interface Props {
   title: string;
   name: string;
   type: string;
+  onPress?: () => void;
 }
 
-const HomeHeader: FC<Props> = ({title, name, type}) => {
-  const {navigate}: any = useNavigation();
+const HomeHeader: FC<Props> = ({title, name, onPress}) => {
   const BadgeIcon: any = withBadge(0)(Feather);
   return (
     <View style={styles.header}>
-      <Icon
-        name={name}
-        size={25}
-        onPress={() => navigate(type)}
-        color="white"
-      />
+      <Icon name={name} size={25} onPress={onPress} color="white" />
       <Text style={styles.title}>{title}</Text>
       <View>
         <BadgeIcon
