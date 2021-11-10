@@ -3,14 +3,18 @@ import {
   DrawerItem,
   DrawerItemList,
 } from '@react-navigation/drawer';
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, Switch} from 'react-native';
 import {Icon} from 'react-native-elements';
 
 import {Avatar} from 'react-native-elements/dist/avatar/Avatar';
 import {colors} from '../global/styles';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Feather from 'react-native-vector-icons/Feather';
 
 const DrawerContent = (props: any) => {
+  const [dark, setDark] = useState(false);
   return (
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>
@@ -53,20 +57,75 @@ const DrawerContent = (props: any) => {
           </View>
         </View>
         <DrawerItemList {...props} />
-        <View>
-          <DrawerItem
-            label="Payment"
-            icon={({color, size}) => (
-              <Icon
-                name="payment"
-                type="MaterialIcons"
-                size={size}
-                color={color}
-              />
-            )}
-          />
+
+        <DrawerItem
+          label="Payment"
+          icon={({color, size}) => (
+            <Icon
+              name="payment"
+              type="MaterialIcons"
+              size={size}
+              color={color}
+            />
+          )}
+        />
+        <DrawerItem
+          label="Driver Console"
+          icon={({color, size}) => (
+            <Icon
+              name="delivery-dining"
+              type="MaterialIcons"
+              size={size}
+              color={color}
+            />
+          )}
+        />
+        <DrawerItem
+          label="Promotions"
+          icon={({color, size}) => (
+            <AntDesign name="tags" size={size} color={color} />
+          )}
+        />
+        <DrawerItem
+          label="Settings"
+          icon={({color, size}) => (
+            <Ionicons name="settings-sharp" size={size} color={color} />
+          )}
+        />
+        <DrawerItem
+          label="Help"
+          icon={({color, size}) => (
+            <Feather name="help-circle" size={size} color={color} />
+          )}
+        />
+        <View style={{marginHorizontal: 20, marginTop: 10}}>
+          <Text style={{fontSize: 17, color: colors.grey1, fontWeight: '600'}}>
+            Preference
+          </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginTop: 10,
+            }}>
+            <Text style={{fontSize: 16}}>Dark Theme</Text>
+            <Switch
+              trackColor={{false: '#767577', true: colors.buttons}}
+              thumbColor="white"
+              value={dark}
+              onValueChange={() => setDark(!dark)}
+            />
+          </View>
         </View>
       </DrawerContentScrollView>
+      <DrawerItem
+        style={{marginBottom: 30, marginLeft: 20}}
+        label="Sign out"
+        icon={({color, size}) => (
+          <Feather name="log-out" size={size} color={color} />
+        )}
+      />
     </View>
   );
 };
