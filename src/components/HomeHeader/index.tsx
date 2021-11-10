@@ -2,14 +2,13 @@ import React, {FC} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {colors, parameters} from '../../global/styles';
 import {Icon} from 'react-native-elements';
-import {useNavigation} from '@react-navigation/core';
 import {withBadge} from 'react-native-elements';
 import Feather from 'react-native-vector-icons/Feather';
 
 interface Props {
   title: string;
   name: string;
-  type: string;
+  type?: string;
   onPress?: () => void;
 }
 

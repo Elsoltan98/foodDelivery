@@ -8,3 +8,4 @@ export const MYORDERS = 'My Orders';
 export const RESTURANTMAP = 'Resturant map';
 export const ROOTNAVIGATOR = 'Root Navigator';
 export const DRAWERNAVIGATOR = 'Drawer Navigator';
+export const BUSINESS = 'Business';
