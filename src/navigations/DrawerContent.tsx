@@ -4,7 +4,7 @@ import {
   DrawerItemList,
 } from '@react-navigation/drawer';
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Switch} from 'react-native';
+import {View, Text, StyleSheet, Switch, Platform} from 'react-native';
 import {Icon} from 'react-native-elements';
 
 import {Avatar} from 'react-native-elements/dist/avatar/Avatar';
@@ -109,7 +109,10 @@ const DrawerContent = (props: any) => {
               alignItems: 'center',
               marginTop: 10,
             }}>
-            <Text style={{fontSize: 16}}>Dark Theme</Text>
+            <Text
+              style={{fontSize: 16, fontWeight: '600', color: colors.grey2}}>
+              Dark Theme
+            </Text>
             <Switch
               trackColor={{false: '#767577', true: colors.buttons}}
               thumbColor="white"
@@ -120,7 +123,7 @@ const DrawerContent = (props: any) => {
         </View>
       </DrawerContentScrollView>
       <DrawerItem
-        style={{marginBottom: 30, marginLeft: 20}}
+        style={{marginBottom: Platform.OS === 'ios' ? 30 : 15, marginLeft: 20}}
         label="Sign out"
         icon={({color, size}) => (
           <Feather name="log-out" size={size} color={color} />
