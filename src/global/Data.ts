@@ -6,6 +6,38 @@ export const filterData = [
   {name: 'Chinese', image: require('./../../assets/icons/icon5.png'), id: 5},
   {name: 'Mexican', image: require('./../../assets/icons/icon6.png'), id: 6},
 ];
+export const filterData2 = [
+  {
+    name: 'Fast food',
+    image: 'https://bukasapics.s3.us-east-2.amazonaws.com/chicken.png',
+    id: 1,
+  },
+  {
+    name: 'Burgers',
+    image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate5.png',
+    id: 2,
+  },
+  {
+    name: 'Salad',
+    image: 'https://bukasapics.s3.us-east-2.amazonaws.com/macdo.png',
+    id: 3,
+  },
+  {
+    name: 'Desert',
+    image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate4.png',
+    id: 4,
+  },
+  {
+    name: 'Chinese',
+    image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate2.png',
+    id: 5,
+  },
+  {
+    name: 'Mexican',
+    image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate1.png',
+    id: 6,
+  },
+];
 
 export const resturantsData = [
   {
