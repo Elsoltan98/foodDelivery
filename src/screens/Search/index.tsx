@@ -16,18 +16,18 @@ import {FlatList, TextInput, TouchableWithoutFeedback} from 'react-native';
 import {colors} from '../../global/styles';
 import * as Animatable from 'react-native-animatable';
 import {filterData, filterData2} from '../../global/Data';
-import {SEARCH} from '../../global/RoutesName';
+import {SEARCHRESULT} from '../../global/RoutesName';
 import {useNavigation} from '@react-navigation/core';
 import {ScreenWidth} from 'react-native-elements/dist/helpers';
 
 const Screen_width = Dimensions.get('window').width;
 
 const Search = () => {
-  const {navigate} = useNavigation();
+  const {navigate}: any = useNavigation();
   const [data, setData] = useState([...filterData]);
   const [modalVisible, setModalVisible] = useState(false);
   const [searchFocused, setSearchFocused] = useState(true);
-  const textInput = useRef(0);
+  const textInput: any = useRef(0);
 
   const contains = ({name}: {name: any}, query: any) => {
     if (name.includes(query)) {
@@ -118,7 +118,7 @@ const Search = () => {
             <TouchableOpacity
               onPress={() => {
                 Keyboard.dismiss;
-                navigate(SEARCH);
+                navigate(SEARCHRESULT, {name: item.name});
                 setModalVisible(false);
                 setSearchFocused(false);
               }}>
@@ -144,7 +144,8 @@ const Search = () => {
           data={filterData2}
           key={(item: any) => item.id}
           renderItem={({item}) => (
-            <TouchableWithoutFeedback onPress={() => {}}>
+            <TouchableWithoutFeedback
+              onPress={() => navigate(SEARCHRESULT, {name: item.name})}>
               <View style={{margin: 5}}>
                 <ImageBackground
                   style={{
@@ -189,6 +190,17 @@ const Search = () => {
                 marginBottom: 5,
               }}>
               Top Categories
+            </Text>
+          }
+          ListFooterComponent={
+            <Text
+              style={{
+                fontWeight: '700',
+                fontSize: 17,
+                color: colors.grey1,
+                marginVertical: 5,
+              }}>
+              More Categories
             </Text>
           }
         />

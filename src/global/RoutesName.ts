@@ -9,3 +9,5 @@ export const RESTURANTMAP = 'Resturant map';
 export const ROOTNAVIGATOR = 'Root Navigator';
 export const DRAWERNAVIGATOR = 'Drawer Navigator';
 export const BUSINESS = 'Business';
+export const SEARCHRESULT = 'Search Result';
+export const SEARCHNAV = 'Search Nav';

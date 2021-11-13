@@ -1,13 +1,13 @@
 import React from 'react';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {ACCOUNT, HOME, MYORDERS, SEARCH} from '../global/RoutesName';
+import {ACCOUNT, HOME, MYORDERS, SEARCHNAV} from '../global/RoutesName';
 import Home from '../screens/Home';
 import {Icon} from 'react-native-elements';
 import {colors} from '../global/styles';
-import Search from '../screens/Search';
 import MyOrders from '../screens/MyOrders';
 import Account from '../screens/Account';
+import SearchNavigation from './searchNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -30,9 +30,10 @@ const clientNavigation = () => {
           tabBarIcon: ({color, size}) => (
             <Icon name="search" type="Fontisto" size={size} color={color} />
           ),
+          title: 'Search',
         }}
-        name={SEARCH}
-        component={Search}
+        name={SEARCHNAV}
+        component={SearchNavigation}
       />
       <Tab.Screen
         options={{
