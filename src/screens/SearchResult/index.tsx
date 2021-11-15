@@ -9,9 +9,10 @@ import {
 } from 'react-native';
 import FoodCard from '../../components/FoodCard';
 import {resturantsData} from '../../global/Data';
+import {SEARCHRESULTDETAILS} from '../../global/RoutesName';
 import {colors} from '../../global/styles';
 
-const SearchResult = ({route}: any) => {
+const SearchResult = ({route, navigation}: any) => {
   const {name} = route.params;
 
   return (
@@ -25,9 +26,18 @@ const SearchResult = ({route}: any) => {
           showsHorizontalScrollIndicator={false}
           data={resturantsData}
           keyExtractor={(item): any => item.id}
-          renderItem={({item}) => (
+          renderItem={({item, index}) => (
             <View>
-              <FoodCard fullWidth item={item} />
+              <FoodCard
+                fullWidth
+                item={item}
+                onClick={() =>
+                  navigation.navigate(SEARCHRESULTDETAILS, {
+                    id: index,
+                    item: item,
+                  })
+                }
+              />
               <FlatList
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
@@ -72,7 +82,8 @@ const styles = StyleSheet.create({
   mainText: {
     fontSize: 18,
     fontWeight: '600',
-    marginVertical: 15,
+    marginVertical: 10,
+    marginTop: 20,
     marginHorizontal: 10,
   },
   primaryContainer: {

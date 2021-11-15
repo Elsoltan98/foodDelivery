@@ -38,13 +38,14 @@ interface Props {
     id: number;
   };
   fullWidth?: boolean;
+  onClick?: () => void;
 }
 
 const ScreenWidth = Dimensions.get('screen').width;
 
-const FoodCard: FC<Props> = ({item, fullWidth}) => {
+const FoodCard: FC<Props> = ({item, fullWidth, onClick}) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity onPress={onClick} style={styles.container}>
       <Image
         source={{uri: item.images}}
         width={150}
