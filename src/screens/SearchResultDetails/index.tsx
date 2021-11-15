@@ -1,10 +1,13 @@
 import React from 'react';
 import {View, Text} from 'react-native';
+import SearchDetailsHeader from '../../components/SearchDetailsHeader';
 
-const SearchResultDetails = () => {
+const SearchResultDetails = ({route}) => {
+  const {item, id} = route.params;
+  console.log(route.params);
   return (
     <View>
-      <Text>Search Result Details</Text>
+      <SearchDetailsHeader id={id} image={item.images} />
     </View>
   );
 };
