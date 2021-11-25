@@ -134,3 +134,23 @@ export const resturantsData = [
     id: 2,
   },
 ];
+
+export const menuData = [
+  {title: 'BEEF', special: false, key: 0},
+  {title: 'HOT DRINKS', special: false, key: 1},
+  {title: 'CHICKEN', special: false, key: 2},
+  {title: 'VEGGIE BURGER', special: false, key: 3},
+  {title: 'FRIES & CORN', special: false, key: 4},
+  {title: 'SALADS', special: false, key: 5},
+  {title: 'HAPPY MEALS', special: false, key: 6},
+  {title: 'SAHRE BOX', special: false, key: 7},
+  {title: 'MILKSHAKES', special: false, key: 8},
+  {title: 'COLD DRINKS', special: false, key: 9},
+  {title: 'DESSERTS', special: false, key: 10},
+];
+export const specialData = [
+  {title: 'LIMITED OFFER', key: 0},
+  {title: 'GO CHILLI', key: 1},
+  {title: 'GO CHEESE', key: 2},
+  {title: 'MCCHICKEN DELUXE PROMO', key: 3},
+];

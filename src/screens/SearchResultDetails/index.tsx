@@ -4,6 +4,8 @@ import {Icon} from 'react-native-elements';
 import SearchDetailsHeader from '../../components/SearchDetailsHeader';
 import {colors} from '../../global/styles';
 import {TabView, TabBar} from 'react-native-tab-view';
+import {ScrollView} from 'react-native-gesture-handler';
+import MenuTab from '../ResturantTab/MenuTab';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const initialLayout = SCREEN_WIDTH;
@@ -22,7 +24,7 @@ const SearchResultDetails = ({route}) => {
     return <View />;
   };
 
-  const renderTabBar = props => {
+  const renderTabBar = (props: any) => {
     return (
       <TabBar
         {...props}
@@ -35,6 +37,7 @@ const SearchResultDetails = ({route}) => {
   return (
     <View style={{flex: 1}}>
       <SearchDetailsHeader id={id} image={item.images} />
+
       <Text
         style={{
           textAlign: 'center',
@@ -75,19 +78,60 @@ const SearchResultDetails = ({route}) => {
           </View>
         </View>
         <View style={{flexDirection: 'row'}}>
-          <View style={{marginRight: 10}}>
-            <Text>Collect</Text>
-            <Text>5</Text>
-            <Text>min</Text>
+          <View
+            style={{
+              marginRight: 15,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Text
+              style={{
+                fontSize: 17,
+                marginBottom: 5,
+                fontWeight: '600',
+                color: colors.grey2,
+              }}>
+              Collect
+            </Text>
+            <Text
+              style={{
+                fontSize: 18,
+                marginBottom: 5,
+                fontWeight: '800',
+                color: colors.grey2,
+              }}>
+              5
+            </Text>
+            <Text style={{fontSize: 13, marginTop: 5, color: colors.grey2}}>
+              min
+            </Text>
           </View>
-          <View>
-            <Text>Delivery</Text>
-            <Text>15</Text>
-            <Text>min</Text>
+          <View
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Text
+              style={{fontSize: 17, fontWeight: '600', color: colors.grey2}}>
+              Delivery
+            </Text>
+            <View
+              style={{
+                backgroundColor: colors.buttons,
+                padding: 10,
+                borderRadius: 100,
+                width: 55,
+                height: 55,
+                alignItems: 'center',
+              }}>
+              <Text style={{fontSize: 18, fontWeight: '800', color: '#fff'}}>
+                15
+              </Text>
+              <Text style={{fontSize: 13, color: '#fff'}}>min</Text>
+            </View>
           </View>
         </View>
       </View>
-
       <TabView
         navigationState={{index, routes}}
         renderTabBar={renderTabBar}
@@ -95,7 +139,11 @@ const SearchResultDetails = ({route}) => {
         onIndexChange={setIndex}
         initialLayout={initialLayout}
         tabBarPosition="top"
+        style={{marginBottom: 10, flex: 0}}
       />
+      <ScrollView showsVerticalScrollIndicator={false} style={{flex: 1}}>
+        <View style={{padding: 10}}>{index === 0 && <MenuTab />}</View>
+      </ScrollView>
     </View>
   );
 };
