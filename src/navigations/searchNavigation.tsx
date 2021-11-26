@@ -7,7 +7,7 @@ import SearchResultDetails from '../screens/SearchResultDetails';
 
 const SearchStack = createNativeStackNavigator();
 
-const SearchNavigation = () => {
+const SearchNavigation = ({}) => {
   return (
     <SearchStack.Navigator screenOptions={{headerShown: false}}>
       <SearchStack.Screen name={SEARCH} component={Search} />

@@ -1,39 +1,31 @@
-import React, {useState} from 'react';
-import {View, Text, Dimensions} from 'react-native';
+import React, {useEffect, useLayoutEffect, useState} from 'react';
+import {View, Text, Dimensions, Modal} from 'react-native';
 import {Icon} from 'react-native-elements';
 import SearchDetailsHeader from '../../components/SearchDetailsHeader';
 import {colors} from '../../global/styles';
-import {TabView, TabBar} from 'react-native-tab-view';
+
 import {ScrollView} from 'react-native-gesture-handler';
 import MenuTab from '../ResturantTab/MenuTab';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import {menuData, specialData} from '../../global/Data';
+import CustomTabView from '../../components/TabView';
 
-const SCREEN_WIDTH = Dimensions.get('window').width;
-const initialLayout = SCREEN_WIDTH;
-
-const SearchResultDetails = ({route}) => {
+const SearchResultDetails = ({route}: any) => {
   const {item, id} = route.params;
+
+  const [modalVisibile, setModalVisible] = useState(false);
+
   const [index, setIndex] = React.useState(0);
+  const [index2, setIndex2] = React.useState(0);
+
   const [routes] = useState([
     {key: 'first', title: 'MENU'},
     {key: 'second', title: 'INFO'},
     {key: 'third', title: 'REVIEWS'},
     {key: 'fourth', title: 'GALLERY'},
   ]);
+  const [routes2] = useState(menuData);
 
-  const UpdateRoute = () => {
-    return <View />;
-  };
-
-  const renderTabBar = (props: any) => {
-    return (
-      <TabBar
-        {...props}
-        indicatorStyle={{backgroundColor: 'white'}}
-        style={{backgroundColor: colors.buttons}}
-        activeColor={'#fff'}
-      />
-    );
-  };
   return (
     <View style={{flex: 1}}>
       <SearchDetailsHeader id={id} image={item.images} />
@@ -132,18 +124,60 @@ const SearchResultDetails = ({route}) => {
           </View>
         </View>
       </View>
-      <TabView
-        navigationState={{index, routes}}
-        renderTabBar={renderTabBar}
-        renderScene={UpdateRoute}
-        onIndexChange={setIndex}
-        initialLayout={initialLayout}
-        tabBarPosition="top"
-        style={{marginBottom: 10, flex: 0}}
-      />
+      <CustomTabView routes={routes} index={index} setIndex={setIndex} />
+
       <ScrollView showsVerticalScrollIndicator={false} style={{flex: 1}}>
-        <View style={{padding: 10}}>{index === 0 && <MenuTab />}</View>
+        <View style={{padding: 10}}>
+          {index === 0 && <MenuTab onPress={() => setModalVisible(true)} />}
+        </View>
       </ScrollView>
+      <View
+        style={{
+          backgroundColor: colors.buttons,
+          padding: 10,
+          paddingVertical: 10,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+        <Text style={{color: '#fff', fontSize: 17, fontWeight: '600'}}>
+          View Cart
+        </Text>
+        <View
+          style={{
+            borderWidth: 1,
+            borderColor: colors.grey5,
+            padding: 5,
+            borderRadius: 10,
+          }}>
+          <Text style={{color: '#fff', fontWeight: '600', fontSize: 17}}>
+            0
+          </Text>
+        </View>
+      </View>
+      <Modal style={{flex: 1}} visible={modalVisibile} animationType="slide">
+        <View
+          style={{
+            marginTop: 50,
+            marginLeft: 15,
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}>
+          <AntDesign
+            name="arrowleft"
+            size={25}
+            onPress={() => setModalVisible(false)}
+            style={{marginRight: 10}}
+          />
+          <Text style={{fontSize: 22, fontWeight: '600'}}>Menu</Text>
+        </View>
+        <CustomTabView
+          scrollEnabled
+          routes={routes2}
+          index={index2}
+          setIndex={setIndex2}
+        />
+      </Modal>
     </View>
   );
 };

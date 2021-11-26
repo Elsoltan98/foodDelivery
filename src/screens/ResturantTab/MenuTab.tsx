@@ -1,15 +1,17 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import {Icon} from 'react-native-elements';
 import {menuData, specialData} from '../../global/Data';
 import {colors} from '../../global/styles';
 
-const MenuTab = () => {
+const MenuTab = ({onPress}: any) => {
   return (
     <View>
       <View>
         {specialData.map(item => (
-          <View
+          <TouchableOpacity
+            onPress={onPress}
+            key={item.key}
             style={{
               alignItems: 'center',
               flexDirection: 'row',
@@ -21,24 +23,26 @@ const MenuTab = () => {
               type="FontAwesome"
               name="star"
             />
-            <Text style={{fontSize: 17, color: colors.grey2}} key={item.key}>
+            <Text style={{fontSize: 17, color: colors.grey2}}>
               {item.title}
             </Text>
-          </View>
+          </TouchableOpacity>
         ))}
       </View>
       <View style={{marginLeft: 30}}>
         {menuData.map(item => (
-          <View
+          <TouchableOpacity
+            onPress={onPress}
+            key={item.key}
             style={{
               alignItems: 'center',
               flexDirection: 'row',
               marginVertical: 5,
             }}>
-            <Text style={{fontSize: 17, color: colors.grey2}} key={item.key}>
+            <Text style={{fontSize: 17, color: colors.grey2}}>
               {item.title}
             </Text>
-          </View>
+          </TouchableOpacity>
         ))}
       </View>
     </View>
