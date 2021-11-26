@@ -7,7 +7,13 @@ import {colors} from '../../global/styles';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const initialLayout = SCREEN_WIDTH;
 
-const CustomTabView = ({routes, index, setIndex, scrollEnabled}: any) => {
+const CustomTabView = ({
+  routes,
+  index,
+  setIndex,
+  scrollEnabled,
+  renderScene,
+}: any) => {
   const UpdateRoute = () => {
     return <View />;
   };
@@ -28,7 +34,7 @@ const CustomTabView = ({routes, index, setIndex, scrollEnabled}: any) => {
       <TabView
         navigationState={{index, routes}}
         renderTabBar={renderTabBar}
-        renderScene={UpdateRoute}
+        renderScene={renderScene ? renderScene : UpdateRoute}
         onIndexChange={setIndex}
         initialLayout={initialLayout}
         tabBarPosition="top"

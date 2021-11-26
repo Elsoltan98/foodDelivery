@@ -17,10 +17,14 @@ import {filterData, resturantsData} from '../../global/Data';
 import FoodCard from '../../components/FoodCard';
 import CountDown from 'react-native-countdown-component';
 import {Icon} from 'react-native-elements';
+import FreeDelivery from '../../components/FreeDeliveryFlat';
+import CategoriesFlat from '../../components/CategoriesFlat';
+import ResAreaFlat from '../../components/ResAreaFlat';
+import PromotionsFlat from '../../components/PromotionsFlat';
 
 const Home = ({navigation}: any) => {
   const [delivery, setDelivery] = useState(true);
-  const [selected, setSelected] = useState(1);
+
   return (
     <View style={styles.container}>
       <HomeHeader
@@ -100,34 +104,7 @@ const Home = ({navigation}: any) => {
             </Text>
           </View>
 
-          <FlatList
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            data={filterData}
-            keyExtractor={(item): any => item.id}
-            renderItem={({item}) => (
-              <TouchableOpacity
-                onPress={() => setSelected(item.id)}
-                style={[
-                  styles.imageContainer,
-                  {
-                    backgroundColor:
-                      selected === item.id ? colors.buttons : colors.grey5,
-                  },
-                ]}>
-                <View style={styles.imageBack}>
-                  <Image source={item.image} style={styles.image} />
-                </View>
-                <Text
-                  style={[
-                    styles.nameText,
-                    {color: selected === item.id ? '#fff' : colors.grey1},
-                  ]}>
-                  {item.name}
-                </Text>
-              </TouchableOpacity>
-            )}
-          />
+          <CategoriesFlat />
         </View>
         {/* Food delivery now */}
         <View
@@ -163,17 +140,7 @@ const Home = ({navigation}: any) => {
         </View>
 
         <View>
-          <FlatList
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            data={resturantsData}
-            keyExtractor={(item): any => item.id}
-            renderItem={({item}) => (
-              <View>
-                <FoodCard item={item} />
-              </View>
-            )}
-          />
+          <FreeDelivery />
         </View>
 
         {/* Promotions available */}
@@ -189,17 +156,7 @@ const Home = ({navigation}: any) => {
         </View>
 
         <View>
-          <FlatList
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            data={resturantsData}
-            keyExtractor={(item): any => item.id}
-            renderItem={({item}) => (
-              <View>
-                <FoodCard item={item} />
-              </View>
-            )}
-          />
+          <PromotionsFlat />
         </View>
         {/* Resturants in your area */}
         <View
@@ -214,17 +171,7 @@ const Home = ({navigation}: any) => {
         </View>
 
         <View style={{marginBottom: 50}}>
-          <FlatList
-            horizontal={false}
-            showsHorizontalScrollIndicator={false}
-            data={resturantsData}
-            keyExtractor={(item): any => item.id}
-            renderItem={({item}) => (
-              <View>
-                <FoodCard fullWidth item={item} />
-              </View>
-            )}
-          />
+          <ResAreaFlat />
         </View>
       </ScrollView>
 

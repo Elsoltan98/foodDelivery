@@ -9,6 +9,7 @@ import MenuTab from '../ResturantTab/MenuTab';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {menuData, specialData} from '../../global/Data';
 import CustomTabView from '../../components/TabView';
+import {SceneMap} from 'react-native-tab-view';
 
 const SearchResultDetails = ({route}: any) => {
   const {item, id} = route.params;
@@ -25,6 +26,14 @@ const SearchResultDetails = ({route}: any) => {
     {key: 'fourth', title: 'GALLERY'},
   ]);
   const [routes2] = useState(menuData);
+
+  const FirstRoute = () => (
+    <View style={{flex: 1, backgroundColor: '#ff4081'}} />
+  );
+
+  const renderScene = SceneMap({
+    first: FirstRoute,
+  });
 
   return (
     <View style={{flex: 1}}>
@@ -167,7 +176,7 @@ const SearchResultDetails = ({route}: any) => {
             name="arrowleft"
             size={25}
             onPress={() => setModalVisible(false)}
-            style={{marginRight: 10}}
+            style={{marginRight: 15}}
           />
           <Text style={{fontSize: 22, fontWeight: '600'}}>Menu</Text>
         </View>
@@ -176,6 +185,7 @@ const SearchResultDetails = ({route}: any) => {
           routes={routes2}
           index={index2}
           setIndex={setIndex2}
+          renderScene={renderScene}
         />
       </Modal>
     </View>
