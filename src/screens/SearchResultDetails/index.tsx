@@ -1,5 +1,5 @@
-import React, {useEffect, useLayoutEffect, useState} from 'react';
-import {View, Text, Dimensions, Modal} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, Modal} from 'react-native';
 import {Icon} from 'react-native-elements';
 import SearchDetailsHeader from '../../components/SearchDetailsHeader';
 import {colors} from '../../global/styles';
@@ -7,9 +7,22 @@ import {colors} from '../../global/styles';
 import {ScrollView} from 'react-native-gesture-handler';
 import MenuTab from '../ResturantTab/MenuTab';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {menuData, specialData} from '../../global/Data';
+import {menuData} from '../../global/Data';
 import CustomTabView from '../../components/TabView';
-import {SceneMap} from 'react-native-tab-view';
+
+import {
+  FirstRoute,
+  SecRoute,
+  TenRoute,
+  ThirdRoute,
+  FiveRoute,
+  FourRoute,
+  SevenRoute,
+  SixRoute,
+  EightRoute,
+  ElevenRoute,
+  NineRoute,
+} from './../../components/MenuRoute';
 
 const SearchResultDetails = ({route}: any) => {
   const {item, id} = route.params;
@@ -27,13 +40,34 @@ const SearchResultDetails = ({route}: any) => {
   ]);
   const [routes2] = useState(menuData);
 
-  const FirstRoute = () => (
-    <View style={{flex: 1, backgroundColor: '#ff4081'}} />
-  );
-
-  const renderScene = SceneMap({
-    first: FirstRoute,
-  });
+  const renderScene = (inx: number) => {
+    switch (inx) {
+      case 0:
+        return <FirstRoute />;
+      case 1:
+        return <SecRoute />;
+      case 2:
+        return <ThirdRoute />;
+      case 3:
+        return <FourRoute />;
+      case 4:
+        return <FiveRoute />;
+      case 5:
+        return <SixRoute />;
+      case 6:
+        return <SevenRoute />;
+      case 7:
+        return <EightRoute />;
+      case 8:
+        return <NineRoute />;
+      case 9:
+        return <TenRoute />;
+      case 10:
+        return <ElevenRoute />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <View style={{flex: 1}}>
@@ -185,8 +219,40 @@ const SearchResultDetails = ({route}: any) => {
           routes={routes2}
           index={index2}
           setIndex={setIndex2}
-          renderScene={renderScene}
         />
+        {renderScene(index2)}
+        <View
+          style={{
+            backgroundColor: colors.buttons,
+            padding: 15,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <Text
+            style={{
+              color: '#fff',
+              fontSize: 17,
+              fontWeight: '600',
+              marginLeft: 10,
+              marginBottom: 10,
+            }}>
+            View Cart
+          </Text>
+          <View
+            style={{
+              borderWidth: 1,
+              borderColor: colors.grey5,
+              padding: 5,
+              borderRadius: 10,
+              marginRight: 10,
+              marginBottom: 10,
+            }}>
+            <Text style={{color: '#fff', fontWeight: '600', fontSize: 17}}>
+              0
+            </Text>
+          </View>
+        </View>
       </Modal>
     </View>
   );

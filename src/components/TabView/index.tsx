@@ -38,7 +38,7 @@ const CustomTabView = ({
         onIndexChange={setIndex}
         initialLayout={initialLayout}
         tabBarPosition="top"
-        style={{marginVertical: 10, flex: 0}}
+        style={{marginTop: 10, flex: 0}}
       />
     </View>
   );

@@ -54,16 +54,22 @@ export const resturantsData = [
     foodType: 'Burgers, Wraps, Milkshakes...',
     productData: [
       {
+        id: 0,
+        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
         name: 'Hand cut chips',
         price: 29.3,
         image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate5.png',
       },
       {
+        id: 1,
+        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
         name: 'Big mac',
         price: 50.3,
         image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate4.png',
       },
       {
+        id: 2,
+        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
         name: 'Chicken Burger',
         price: 70,
         image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate3.png',
@@ -85,16 +91,22 @@ export const resturantsData = [
     foodType: 'Chicken, Chicken wings',
     productData: [
       {
+        id: 3,
+        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
         name: 'Hand cut chips',
         price: 29.3,
         image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate5.png',
       },
       {
+        id: 4,
+        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
         name: 'Big mac',
         price: 50.3,
         image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate4.png',
       },
       {
+        id: 5,
+        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
         name: 'Chicken Burger',
         price: 70,
         image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate3.png',
@@ -116,16 +128,22 @@ export const resturantsData = [
     foodType: 'Flame grilled beef burgers',
     productData: [
       {
+        id: 6,
+        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
         name: 'Hand cut chips',
         price: 29.3,
         image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate5.png',
       },
       {
+        id: 7,
+        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
         name: 'Big mac',
         price: 50.3,
         image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate4.png',
       },
       {
+        id: 8,
+        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
         name: 'Chicken Burger',
         price: 70,
         image: 'https://bukasapics.s3.us-east-2.amazonaws.com/plate3.png',
