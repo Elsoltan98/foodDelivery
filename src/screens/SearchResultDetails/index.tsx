@@ -172,6 +172,9 @@ const SearchResultDetails = ({route}: any) => {
       <ScrollView showsVerticalScrollIndicator={false} style={{flex: 1}}>
         <View style={{padding: 10}}>
           {index === 0 && <MenuTab onPress={() => setModalVisible(true)} />}
+          {index === 1 && <MenuTab onPress={() => setModalVisible(true)} />}
+          {index === 2 && <MenuTab onPress={() => setModalVisible(true)} />}
+          {index === 3 && <MenuTab onPress={() => setModalVisible(true)} />}
         </View>
       </ScrollView>
       <View

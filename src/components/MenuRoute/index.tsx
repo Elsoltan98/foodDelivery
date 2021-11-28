@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import {colors} from '../../global/styles';
 import MenuRouteCard from '../MenuRouteCard';
 
 export const FirstRoute = () => (
@@ -9,29 +10,31 @@ export const FirstRoute = () => (
   </ScrollView>
 );
 export const SecRoute = () => (
-  <View style={{flex: 1}}>
-    <Text>Second Route</Text>
-  </View>
+  <ScrollView
+    style={{flex: 1, marginBottom: 10, backgroundColor: colors.grey5}}>
+    <MenuRouteCard />
+  </ScrollView>
 );
 export const ThirdRoute = () => (
-  <View style={{flex: 1}}>
-    <Text>Third Route</Text>
-  </View>
+  <ScrollView
+    style={{flex: 1, marginBottom: 10, backgroundColor: colors.grey4}}>
+    <MenuRouteCard />
+  </ScrollView>
 );
 export const FourRoute = () => (
-  <View style={{flex: 1}}>
-    <Text>Four Route</Text>
-  </View>
+  <ScrollView style={{flex: 1, marginBottom: 10}}>
+    <MenuRouteCard />
+  </ScrollView>
 );
 export const FiveRoute = () => (
-  <View style={{flex: 1}}>
-    <Text>Five Route</Text>
-  </View>
+  <ScrollView style={{flex: 1, marginBottom: 10}}>
+    <MenuRouteCard />
+  </ScrollView>
 );
 export const SixRoute = () => (
-  <View style={{flex: 1}}>
-    <Text>Six Route</Text>
-  </View>
+  <ScrollView style={{flex: 1, marginBottom: 10}}>
+    <MenuRouteCard />
+  </ScrollView>
 );
 export const SevenRoute = () => (
   <View style={{flex: 1}}>
