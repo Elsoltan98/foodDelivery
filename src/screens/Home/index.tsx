@@ -1,26 +1,30 @@
 import React, {useState} from 'react';
-import {
-  FlatList,
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import {FlatList, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {View} from 'react-native';
 import HomeHeader from '../../components/HomeHeader';
-import {RESTURANTMAP, SIGNIN} from '../../global/RoutesName';
+import {RESTURANTMAP} from '../../global/RoutesName';
 import {colors} from '../../global/styles';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {filterData, resturantsData} from '../../global/Data';
-import FoodCard from '../../components/FoodCard';
 import CountDown from 'react-native-countdown-component';
-import {Icon} from 'react-native-elements';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FreeDelivery from '../../components/FreeDeliveryFlat';
 import CategoriesFlat from '../../components/CategoriesFlat';
 import ResAreaFlat from '../../components/ResAreaFlat';
 import PromotionsFlat from '../../components/PromotionsFlat';
+
+function VirtualizedView(props: any) {
+  return (
+    <FlatList
+      data={[]}
+      ListEmptyComponent={null}
+      keyExtractor={() => 'dummy'}
+      renderItem={null}
+      ListHeaderComponent={() => (
+        <React.Fragment>{props.children}</React.Fragment>
+      )}
+    />
+  );
+}
 
 const Home = ({navigation}: any) => {
   const [delivery, setDelivery] = useState(true);
@@ -32,7 +36,7 @@ const Home = ({navigation}: any) => {
         name="menu"
         onPress={() => navigation.toggleDrawer()}
       />
-      <ScrollView>
+      <VirtualizedView>
         {/* Top Buttons */}
         <View style={styles.topButtonsContainer}>
           <TouchableOpacity onPress={() => setDelivery(true)}>
@@ -173,15 +177,14 @@ const Home = ({navigation}: any) => {
         <View style={{marginBottom: 50}}>
           <ResAreaFlat />
         </View>
-      </ScrollView>
+      </VirtualizedView>
 
       {/* Float button */}
 
       {delivery && (
         <View style={styles.floatBtn}>
           <TouchableOpacity onPress={() => navigation.navigate(RESTURANTMAP)}>
-            <Icon
-              type="MaterialIcons"
+            <MaterialIcons
               name="location-pin"
               size={21}
               color={colors.buttons}
