@@ -12,7 +12,7 @@ import {
 import {SocialIcon} from 'react-native-elements/dist/social/SocialIcon';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from '../../components/Header';
-import {SIGNUP, WELCOME} from '../../global/RoutesName';
+import {WELCOME} from '../../global/RoutesName';
 import {colors, parameters} from '../../global/styles';
 import styles from './styles';
 import auth from '@react-native-firebase/auth';
@@ -28,23 +28,55 @@ const signIn = async (email, password) => {
   }
 };
 
-const SignIn = ({navigation}: any) => {
+const initialValues = {
+  phoneNumber: '',
+  name: '',
+  familyName: '',
+  email: '',
+  password: '',
+};
+
+const SignUp = ({navigation}: any) => {
   const [show, setShow] = useState(false);
   const textInput1 = useRef(1);
   const textInput2 = useRef(2);
+  const textInput3 = useRef(3);
+  const textInput4 = useRef(4);
+  const textInput5 = useRef(5);
   return (
     <ScrollView>
-      <Header type={WELCOME} title="My Account" name="arrowleft" />
-      <Text style={styles.mainText}>Sign in</Text>
-      <View style={styles.textContainer}>
-        <Text style={styles.text}>Please enter email and password</Text>
-        <Text style={styles.text}>Registered with your account</Text>
-      </View>
+      <Header type={WELCOME} title="Sign up" name="arrowleft" />
+      <Text style={styles.mainText}>Sign Up</Text>
       <Formik
-        initialValues={{email: '', password: ''}}
-        onSubmit={values => signIn(values.email, values.password)}>
+        initialValues={initialValues}
+        onSubmit={values => console.log(values)}>
         {props => (
           <>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="Mobile number"
+                ref={textInput3}
+                onChangeText={props.handleChange('phoneNumber')}
+                value={props.values.phoneNumber}
+                keyboardType="number-pad"
+              />
+            </View>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="Enter name"
+                ref={textInput4}
+                onChangeText={props.handleChange('name')}
+                value={props.values.name}
+              />
+            </View>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="Family name"
+                ref={textInput5}
+                onChangeText={props.handleChange('familyName')}
+                value={props.values.familyName}
+              />
+            </View>
             <View style={styles.inputContainer}>
               <TextInput
                 placeholder="Enter Email"
@@ -77,48 +109,41 @@ const SignIn = ({navigation}: any) => {
                 onPress={() => setShow(!show)}
               />
             </View>
+            <View
+              style={{
+                alignItems: 'center',
+                paddingHorizontal: 50,
+              }}>
+              <Text style={{textAlign: 'center', fontSize: 14, lineHeight: 22}}>
+                By creating or logging into an account you are agreeing with our{' '}
+                <Text style={{color: 'green'}}>Terms & Conditions </Text>and
+                <Text style={{color: 'green'}}> Privacy Statement</Text>
+              </Text>
+            </View>
 
             <TouchableOpacity
               onPress={props.handleSubmit}
               style={parameters.signBtn}>
-              <Text style={styles.signText}>Sign in</Text>
+              <Text style={styles.signText}>Create my account</Text>
             </TouchableOpacity>
           </>
         )}
       </Formik>
 
       <View style={styles.forgetContainer}>
-        <TouchableOpacity>
-          <Text style={styles.forgetText}>Forget password ?</Text>
-        </TouchableOpacity>
         <Text style={styles.orText}>OR</Text>
       </View>
 
       <View>
-        <SocialIcon
-          button
-          type="facebook"
-          title="Sign in with facebook"
-          style={styles.socialBtn}
-        />
-        <SocialIcon
-          button
-          type="google"
-          title="Sign in with google"
-          style={styles.socialBtn}
-        />
+        <Text style={styles.new}>
+          Already have an account with XpressFood ?
+        </Text>
       </View>
-
-      <View>
-        <Text style={styles.new}>New in XpressFood ?</Text>
-      </View>
-      <TouchableOpacity
-        onPress={() => navigation.navigate(SIGNUP)}
-        style={styles.createBtn}>
-        <Text style={styles.createText}>Create an account</Text>
+      <TouchableOpacity style={styles.createBtn}>
+        <Text style={styles.createText}>Sign in</Text>
       </TouchableOpacity>
     </ScrollView>
   );
 };
 
-export default SignIn;
+export default SignUp;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import Swiper from 'react-native-swiper';
-import {SIGNIN} from '../../global/RoutesName';
+import {SIGNIN, SIGNUP} from '../../global/RoutesName';
 import {parameters} from '../../global/styles';
 import styles from './styles';
 
@@ -47,6 +47,7 @@ const Welcome = ({navigation}: any) => {
           <Text style={styles.signText}>Sign in</Text>
         </TouchableOpacity>
         <TouchableOpacity
+          onPress={() => navigation.navigate(SIGNUP)}
           style={{alignItems: 'center', flex: 1, marginHorizontal: 20}}>
           <Text style={styles.createText}>Create an account</Text>
         </TouchableOpacity>

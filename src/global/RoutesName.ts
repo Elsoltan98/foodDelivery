@@ -1,4 +1,5 @@
 export const SIGNIN = 'Sign in';
+export const SIGNUP = 'Sign up';
 export const WELCOME = 'Welcome';
 export const HOME = 'Home';
 export const CLIENTNAV = 'Client Nav';
