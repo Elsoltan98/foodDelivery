@@ -7,13 +7,26 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from 'react-native';
 import {SocialIcon} from 'react-native-elements/dist/social/SocialIcon';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from '../../components/Header';
-import {DRAWERNAVIGATOR, WELCOME} from '../../global/RoutesName';
+import {WELCOME} from '../../global/RoutesName';
 import {colors, parameters} from '../../global/styles';
 import styles from './styles';
+import auth from '@react-native-firebase/auth';
+
+const signIn = async (email, password) => {
+  try {
+    const user = await auth().signInWithEmailAndPassword(email, password);
+    if (user) {
+      console.log('User-signed in', user);
+    }
+  } catch (error) {
+    Alert.alert(error.name, error.message);
+  }
+};
 
 const SignIn = ({navigation}: any) => {
   const [show, setShow] = useState(false);
@@ -28,16 +41,16 @@ const SignIn = ({navigation}: any) => {
         <Text style={styles.text}>Registered with your account</Text>
       </View>
       <Formik
-        initialValues={{username: '', password: ''}}
-        onSubmit={values => console.log(values)}>
+        initialValues={{email: '', password: ''}}
+        onSubmit={values => signIn(values.email, values.password)}>
         {props => (
           <>
             <View style={styles.inputContainer}>
               <TextInput
                 placeholder="Enter Email"
                 ref={textInput1}
-                onChangeText={props.handleChange('username')}
-                value={props.values.username}
+                onChangeText={props.handleChange('email')}
+                value={props.values.email}
               />
             </View>
             <View style={styles.inputContainer}>
@@ -54,6 +67,7 @@ const SignIn = ({navigation}: any) => {
                   ref={textInput2}
                   onChangeText={props.handleChange('password')}
                   value={props.values.password}
+                  secureTextEntry={show}
                 />
               </View>
               <Icon
@@ -65,7 +79,7 @@ const SignIn = ({navigation}: any) => {
             </View>
 
             <TouchableOpacity
-              onPress={() => navigation.navigate(DRAWERNAVIGATOR)}
+              onPress={props.handleSubmit}
               style={parameters.signBtn}>
               <Text style={styles.signText}>Sign in</Text>
             </TouchableOpacity>
