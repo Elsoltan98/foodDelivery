@@ -1,5 +1,6 @@
 import React from 'react';
 import {SafeAreaView, StatusBar, StyleSheet, View} from 'react-native';
+import {SignInContextProvider} from './src/Context/Context';
 import {colors} from './src/global/styles';
 import RootNavigator from './src/navigations/RootNavigator';
 
@@ -13,10 +14,15 @@ const MyStatusBar = ({backgroundColor, ...props}: any) => (
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <MyStatusBar backgroundColor={colors.statusBar} barStyle="dark-content" />
-      <RootNavigator />
-    </View>
+    <SignInContextProvider>
+      <View style={styles.container}>
+        <MyStatusBar
+          backgroundColor={colors.statusBar}
+          barStyle="dark-content"
+        />
+        <RootNavigator />
+      </View>
+    </SignInContextProvider>
   );
 };
 

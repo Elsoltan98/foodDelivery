@@ -9,7 +9,6 @@ import {
   ScrollView,
   Alert,
 } from 'react-native';
-import {SocialIcon} from 'react-native-elements/dist/social/SocialIcon';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from '../../components/Header';
 import {WELCOME} from '../../global/RoutesName';
@@ -17,14 +16,20 @@ import {colors, parameters} from '../../global/styles';
 import styles from './styles';
 import auth from '@react-native-firebase/auth';
 
-const signIn = async (email, password) => {
+const signUp = async (email, password) => {
   try {
-    const user = await auth().signInWithEmailAndPassword(email, password);
+    const user = await auth().createUserWithEmailAndPassword(email, password);
     if (user) {
-      console.log('User-signed in', user);
+      console.log('User-signed up', user);
     }
   } catch (error) {
-    Alert.alert(error.name, error.message);
+    if (error.code === 'auth/email-already-in-use') {
+      Alert.alert('That email address is already in use!');
+    } else if (error.code === 'auth/invalid-email') {
+      Alert.alert('That email address is invalid!');
+    } else {
+      Alert.alert(error.name, error.message);
+    }
   }
 };
 
@@ -49,7 +54,7 @@ const SignUp = ({navigation}: any) => {
       <Text style={styles.mainText}>Sign Up</Text>
       <Formik
         initialValues={initialValues}
-        onSubmit={values => console.log(values)}>
+        onSubmit={values => signUp(values.email, values.password)}>
         {props => (
           <>
             <View style={styles.inputContainer}>

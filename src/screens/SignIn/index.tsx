@@ -1,5 +1,5 @@
 import {Formik} from 'formik';
-import React, {useRef} from 'react';
+import React, {useContext, useRef} from 'react';
 import {useState} from 'react';
 import {
   View,
@@ -16,22 +16,28 @@ import {SIGNUP, WELCOME} from '../../global/RoutesName';
 import {colors, parameters} from '../../global/styles';
 import styles from './styles';
 import auth from '@react-native-firebase/auth';
-
-const signIn = async (email, password) => {
-  try {
-    const user = await auth().signInWithEmailAndPassword(email, password);
-    if (user) {
-      console.log('User-signed in', user);
-    }
-  } catch (error) {
-    Alert.alert(error.name, error.message);
-  }
-};
+import {SignInContext} from '../../Context/Context';
+import {UPDATE_SIGN_IN} from '../../Context/types';
 
 const SignIn = ({navigation}: any) => {
   const [show, setShow] = useState(false);
   const textInput1 = useRef(1);
   const textInput2 = useRef(2);
+
+  const {dispatchSignedIn}: any = useContext(SignInContext);
+  const signIn = async (email: string, password: string) => {
+    try {
+      const user = await auth().signInWithEmailAndPassword(email, password);
+      if (user) {
+        dispatchSignedIn({
+          type: UPDATE_SIGN_IN,
+          payload: {userToken: 'sign-in'},
+        });
+      }
+    } catch (error) {
+      Alert.alert(error.name, error.message);
+    }
+  };
   return (
     <ScrollView>
       <Header type={WELCOME} title="My Account" name="arrowleft" />
